@@ -1,8 +1,11 @@
+import 'package:fitness/models/category_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  List<CategoryModel> categories = [];
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +20,12 @@ class HomePage extends StatelessWidget {
             height: 40,
           ),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Padding(
-                padding: EdgeInsets.all(8.0),
+                padding: EdgeInsets.only(left: 20.0),
                 child: Text(
-                  'CategoryX',
+                  'Category',
                   style: TextStyle(
                       color: Colors.black,
                       fontSize: 18,
@@ -35,6 +39,9 @@ class HomePage extends StatelessWidget {
               Container(
                 height: 150,
                 color: Colors.green,
+                child: ListView.builder(itemBuilder: (context, index) {
+                  return Container();
+                }),
               )
             ],
           )
@@ -63,8 +70,8 @@ class HomePage extends StatelessWidget {
               fontSize: 14,
             ),
             prefixIcon: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SvgPicture.asset('asset/icons/Search.svg'),
+              padding: const EdgeInsets.all(12),
+              child: SvgPicture.asset('assets/icons/Search.svg'),
             ),
             suffixIcon: Container(
               width: 100,
@@ -76,11 +83,11 @@ class HomePage extends StatelessWidget {
                       color: Colors.black,
                       indent: 10,
                       endIndent: 10,
-                      thickness: 0.1,
+                      thickness: 0.5,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: SvgPicture.asset('asset/icons/Filter.svg'),
+                      child: SvgPicture.asset('assets/icons/Filter.svg'),
                     ),
                   ],
                 ),
@@ -125,14 +132,12 @@ class HomePage extends StatelessWidget {
         Container(
           margin: const EdgeInsets.all(10),
           alignment: Alignment.center,
-          width: 37,
           decoration: BoxDecoration(
               color: const Color(0xffF7F8F8),
               borderRadius: BorderRadius.circular(10)),
-          child: SvgPicture.asset(
-            'assets/icons/dots.svg',
-            height: 20,
-            width: 20,
+          child: Padding(
+            padding: const EdgeInsets.all(12),
+            child: SvgPicture.asset('assets/icons/dots.svg'),
           ),
         ),
       ],
